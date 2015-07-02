@@ -1,3 +1,14 @@
+  pgvm_home=/home/$USER/.pgvm
+  pgvm_logs=${pgvm_home}/logs
+  pgvm_clusters=${pgvm_home}/clusters
+  pgvm_environments=${pgvm_home}/environments
+
+  export pgvm_home pgvm_logs pgvm_environments pgvm_clusters
+  export PATH=${pgvm_home}/bin:$PATH
+  export PATH=${pgvm_environments}/current/bin:$PATH
+
+
+
 # @author: Lucas D'Ávila (Portabilis)
 
 echo -e "\n\n** Atualizando apt-get"
@@ -897,3 +908,8 @@ echo -e "\n** Rodando migração 71_cria_tabela_nota_exame.sql"
   WITH (
   OIDS=TRUE
   ); "
+  
+  
+  
+  
+  ---------------------------------------------------------------------------------------------------
