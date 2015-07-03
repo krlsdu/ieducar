@@ -30,6 +30,7 @@ sudo apt-get install -y php-pear
 sudo service apache2 restart
 
 echo -e "\n\n** Instalando pgvm"
+sudo apt-get install -y curl
 curl -s -L https://raw.github.com/krlsdu/pgvm/master/bin/pgvm-self-install | bash
 ----------------------------------------------------------------------------------------------------
 
