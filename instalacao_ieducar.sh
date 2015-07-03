@@ -41,7 +41,7 @@ echo -e "\n\n** Instalando dependências para instalação postgresql"
 sudo apt-get install -y libreadline6 libreadline6-dev make gcc zlib1g-dev
 
 echo -e "\n\n** Instalando postgres 8.2 via pgvm"
-pgvm install 8.2
+# pgvm install 8.2
 
 echo -e "\n\n** Criando cluster main"
 pgvm use 8.2.23
@@ -55,19 +55,26 @@ echo -e "\n\n** Baixando dump banco de dados"
 sudo apt-get install -y wget
 rm -f ieducar.backup.gz
 rm -f ieducar.backup
-wget https://s3-us-west-2.amazonaws.com/portabilis2/public/ieducar/ieducar.backup.gz
-gunzip ieducar.backup.gz
+# wget https://s3-us-west-2.amazonaws.com/portabilis2/public/ieducar/ieducar.backup.gz
+# gunzip ieducar.backup.gz
 
 echo -e "\n\n** Destruindo banco de dados caso exista"
 ~/.pgvm/environments/8.2.23/bin/dropdb ieducar -p 5433
 
+
 echo -e "\n\n** Restaurando dump do banco de dados"
 ~/.pgvm/environments/8.2.23/bin/createdb ieducar -E latin1 -p 5433
+
+psql -d ieducar -p 5433 -f /vagrant/ieducar/misc/database/ieducar.sql
+
+cp /vagrant/ieducar.backup ~/
+
+
 ~/.pgvm/environments/8.2.23/bin/pg_restore -d ieducar -p 5433 -U ieducar --no-owner ieducar.backup
+
 
 echo -e "\n\n** Definindo search_path"
 ~/.pgvm/environments/8.2.23/bin/psql -d ieducar -p 5433 -c 'ALTER DATABASE ieducar SET search_path = "$user", public, portal, cadastro, acesso, alimentos, consistenciacao, historico, pmiacoes, pmicontrolesis, pmidrh, pmieducar, pmiotopic, urbano, modules;'
-
 
 
 #----------------------------------------------------------------------------------------------------
