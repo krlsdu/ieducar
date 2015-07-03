@@ -1,9 +1,9 @@
 <VirtualHost *:80>
 
   ServerName ieducar.local
-  DocumentRoot /home/01560691131/git/ieducar/ieducar
+  DocumentRoot /home/portabilis/ieducar/ieducar
 
-  <Directory /home/01560691131/git/ieducar/ieducar>
+  <Directory /home/portabilis/ieducar/ieducar>
     Order deny,allow
     AllowOverride all
   </Directory>

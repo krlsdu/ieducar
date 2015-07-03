@@ -109,7 +109,7 @@ sudo apt-get install -y rpl
 
 sudo rm -f /etc/apache2/sites-enabled/ieducar
 sudo rm -f /etc/apache2/sites-available/ieducar
-sudo wget https://s3-us-west-2.amazonaws.com/portabilis2/public/ieducar/apache/sites-available/ieducar -P /etc/apache2/sites-available/
+sudo cp   /vagrant/vhieducar -P /etc/apache2/sites-available/ieducar
 sudo rpl "/home/portabilis" "/home/$USER" /etc/apache2/sites-available/ieducar
 
 sudo a2dissite 000-default
